@@ -1,0 +1,22 @@
+--AntiRagdoll
+
+local componentsToRemove = {
+    "RagdollConstraints",
+    "RagdollMe",
+    "StartRagdoll",
+    "Falling down",
+    "Pushed"
+}
+
+local player = game.Players.LocalPlayer
+local playerName = player.Name
+local playerGroup = game.Workspace:FindFirstChild(playerName)
+
+if playerGroup then
+    for _, componentName in ipairs(componentsToRemove) do
+        local component = playerGroup:FindFirstChild(componentName)
+        if component then
+            component:Destroy()
+        end
+    end
+end
